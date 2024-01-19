@@ -64,6 +64,7 @@
     "color.h": "c",
     "common.h": "c",
     "token.h": "c",
-    "parse.h": "c"
+    "parse.h": "c",
+    "lexer.h": "c"
   }
 }

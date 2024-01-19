@@ -1,6 +1,6 @@
 #include <common.h>
 #include <token.h>
-#include <parse.h>
+#include <lexer.h>
 #include <color.h>
 Token tokens[65536] __attribute__((used)) = {};
 int nr_token __attribute__((used))  = 0;
