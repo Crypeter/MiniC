@@ -1,2 +1,4 @@
+
 void init_regex();
-bool make_token(char *e,Token *tokens,int *nr_token);
+void make_lines(char *e,Line *lines,int *nr_line);
+bool make_token(Line *lines,int *nr_line,Token *tokens,int *nr_token);

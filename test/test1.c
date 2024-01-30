@@ -47,5 +47,5 @@ int Merge(int arr[100], int tmp[100], int start, int mid, int end)
     }
 }
 int main(){
-
+    int a;
 }

@@ -18,8 +18,8 @@ lexer:$(SRC_DIR)/lexer.c
 parse:$(SRC_DIR)/parse.c
 	$(CC) $(CFLAGS) -shared $(SRC_DIR)/parse.c -I$(INCLUDE_DIR) -o $(BUILD_DIR)/$@ 
 
-build:color lexer
-	$(CC) $(CFLAGS) $(SRC_DIR)/main.c $(BUILD_DIR)/lexer $(BUILD_DIR)/color -I$(INCLUDE_DIR) -o $(BUILD_DIR)/MiniC
+build:color lexer parse
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.c $(NOW_DIR)/$(BUILD_DIR)/parse $(NOW_DIR)/$(BUILD_DIR)/lexer $(NOW_DIR)/$(BUILD_DIR)/color -I$(INCLUDE_DIR) -o $(BUILD_DIR)/MiniC
 
 run:build
 	$(BUILD_DIR)/MiniC $(NOW_DIR)/$(TEST_DIR)/$(mainargs).c   

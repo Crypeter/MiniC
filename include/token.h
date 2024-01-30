@@ -1,5 +1,6 @@
+#ifndef ___minic_token___
+#define ___minic_token___
 #define NR_REGEX sizeof(rules)/sizeof(rules[0])
-
 enum{
     TK_NOTYPE = 256,TK_NEWLINE,
     TK_LP,TK_RP,TK_LC,TK_RC,TK_LB,TK_RB,
@@ -20,8 +21,7 @@ struct rule {
     const char *regex;
     int token_type;
 } rules[] = {
-    {"[\n]",TK_NEWLINE},
-    {"[ \r\t]+",TK_NOTYPE},
+    {"[ \r\t\n]+",TK_NOTYPE},
 
     //{"([0-9]*\\.[0-9]+)|([0-9]+\\.)|(0-9)*\\.[0-9]+e(-)?[0-9]+)",TK_FLOAT_NUMBER},
     
@@ -54,7 +54,7 @@ struct rule {
 
     {";",TK_SEMI},
     {",",TK_COMMA},
-    {".",TK_DOT},
+    {"[.]",TK_DOT},
     {">|<|>=|<=|==|!=",TK_RELOP},
     {"=",TK_AS},
     {"[+=]",TK_ADD_AS},
@@ -72,12 +72,18 @@ struct rule {
     {"[/]",TK_DIV},
     {"[%]",TK_MOD},
     {"&&",TK_AND},
-    {"||",TK_OR},
+    {"[|][|]",TK_OR},
     {"!",TK_NOT},
 };
 
 typedef struct token {
   int type;
   char str[32];
-  int now_line;
+  int line_number;
 } Token;
+
+typedef struct line {
+    char str[256];
+    int line_number;
+} Line;
+#endif

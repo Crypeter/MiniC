@@ -1,3 +1,4 @@
+#include <parse.h>
 enum colors{
     PR_BLACK,PR_RED,PR_GREEN,
     PR_YELLOW,PR_BLUE,PR_PURPLE,
@@ -15,7 +16,9 @@ enum colors{
 
 int set_color(int color);
 
-int token_print(Token *tokens,const int nr_token);
+int token_print(Token *tokens,const int left,const int right);
+
+int Unit_print(AST_tree* minic_tree);
 
 const char *colors_set[] = {
     "\033[1;30m","\033[1;31m","\033[1;32m",

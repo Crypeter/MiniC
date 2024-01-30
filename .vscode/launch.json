@@ -5,7 +5,7 @@
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/kkoapbd/Desktop/MiniC/build/parse",
+      "program": "/home/kkoapbd/Desktop/MiniC/build/MiniC",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",

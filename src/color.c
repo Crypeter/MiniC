@@ -1,3 +1,4 @@
+#include <parse.h>
 #include <token.h>
 #include <color.h>
 #include <common.h>
@@ -10,8 +11,8 @@ int set_color(int color){
     return color;
 }
 
-int token_print(Token *tokens,const int nr_token){
-    for(int i = 0;i<nr_token;i++){
+int token_print(Token *tokens,const int left,const int right){
+    for(int i = left;i<=right;i++){
         switch (tokens[i].type)
         {
         case TK_LP:
@@ -36,5 +37,19 @@ int token_print(Token *tokens,const int nr_token){
         }
         printf("%s",tokens[i].str);
     }
-    return nr_token;
+    return right - left;
+}
+
+int Unit_print(AST_tree* minic_tree){
+    assert(minic_tree->root->type == Program);
+    AST_Node *now_Unit = minic_tree->root->son;
+    int count = 0;
+    while(now_Unit != NULL){
+        if(count%2 == 1)set_color(BG_RED);
+        else set_color(BG_BLACK);
+        token_print(minic_tree->tokens,now_Unit->left,now_Unit->right);
+        now_Unit = now_Unit->brother;
+        count++;
+    }
+    return count;
 }
